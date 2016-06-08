@@ -1,0 +1,8 @@
+To find approximate peak values in a given data set, I used the following approach: 
+
+First, a baseline value must be determined.  This value is selected such that all peaks are guaranteed to be above the baseline.  In this case, the baseline is just a horizontal line.  To find a particular peak, the data was traced until it passed over the baseline, either ascending or descending.  If the data ascends over the baseline, this is considered to be the rising edge of a peak.  Similarly, if the data descends over the baseline, this is considered to be the falling edge of a peak.  These points are then used as control points: the peak is said to be the highest point between the rising and falling edge points.
+
+The baseline may be adjusted to avoid detection of erroneous peaks.  Also, to avoid biphasic spikes immediate after or before a valid peak, two things may be considered: the width of the peak (the distance between the rising and falling edges of a possible peak), and the gap between peaks (the distance between the falling edge of a peak and the rising edge of the next peak).  By restricting the minimum allowed width and gap, many erroneous peaks can be ignored.  In addition, the data may be smoothed using a simple local average to remove some noise in the data.
+
+
+

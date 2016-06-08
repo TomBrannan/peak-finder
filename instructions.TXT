@@ -1,0 +1,29 @@
+<Instructions>
+
+This program accepts text files containing a set of data and produces Excel documents containing the peak values found within the data set.
+
+How to run this program:
+Double-click on the PeakFinder.jar file to launch the program.  Note: the "lib" folder containing some external libraries must be in the same directory as the PeakFinder.jar file.  If double-clicking on the PeakFinder.jar file doesn't work, you may need to launch it through the command line by first navigating to this folder and typing the command "java -jar PeakFinder.jar"
+
+Using the Peak Finder:
+Click the "Add File(s)" button to select one or more text files containing a set of data you wish to process.  The text files are assumed to be formatted such that a single line contains only one data point, separated by tabs or spaces.  After adding files, click on the filename in the white box to display the graph.  You can remove files individually using the delete key, or remove them all using the "Remove All Files" button.
+
+The controls are split up into two categories: File Options and Graph Options.  After changing anything in either of these categories, the "Update" button at the bottom must be pressed to activate the changes.  
+
+The "File Options" category contains controls for properly parsing the text file.  The first control allows you to select how many lines are ignored before the data is listed (e.g. for headers).  The X-Column and Y-Column controls are used to determine which column in the text file correspond to the X- and Y-values on the graph.  
+
+The "Graph Options" category contains controls for ensuring the program obtains the correct peaks.  The first five check boxes are purely for visual purposes: checking or unchecking any of them and pressing the Update button will toggle on or off parts of the graph.  The raw data from the text file is shown as a blue graph and is always visible.  The peaks are shown as red dots.  The approximation function is shown graphed in red, the baseline is shown in green, and the trend line is a best-fit line graphed through the peaks, shown in green.
+
+The baseline, approximation, minimum gap, and minimum width can all be changed.  The default values are usually appropriate, but they can be changed to weed out erroneous peaks that shouldn't have been detected.  These values will determine which peaks are found in the data set:
+
+The baseline is the y-value of a horizontal line such that all peaks are found above that line.
+
+The approximation value corresponds to how much the raw data is averaged to obtain the smoothed graph.  For example, an approximation of 3 will take 3 points before a point, and 3 points after that point, and average those 7 points to obtain the new point.  All peaks are found along the approximated graph, and an approximation of 0 is the same as the raw data itself.
+
+The minimum gap and minimum width are used mainly for ignoring spikes in biphasic (or just noisy) data.  The width corresponds to the distance between the rising edge and falling edge of the peak; that is, where the peak passes through the baseline on either side.  The gap corresponds to the distance from the falling edge of one peak to the rising edge of the next.  Making these values larger may help to get rid of invalid peaks.
+
+After hitting the "Update" button, any changes will take effect only for the currently loaded graph.  The number of peaks found will be listed above the Update button.  
+
+After viewing each graph and ensuring the peaks are correct, clicking the "Export all to Excel" button will bring up a directory selection dialog: navigate to a folder and click "Open" to save all of the graphs to that directory, as .xls (Excel) files.  The file names are the same as the text files containing the data, if they ended in .txt.  
+
+Note that all files are saved to the same directory, so if you have data you wish to keep separate, you should instead open all text files from one group, make sure they're correct, export to Excel, then remove those files and do the same with the next group, but export to Excel in a different folder.  
